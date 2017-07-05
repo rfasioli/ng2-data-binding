@@ -1,5 +1,5 @@
 <section class="property-binding">
-  <!--
+  
   <article>
     <h3>Interpolation / Interpolação</h3>
     <p>String renderizada com interpolação: {{ url }}</p>
@@ -38,7 +38,6 @@
     <div class="alert alert-danger" role="alert" [style.display]="classe.value == 'alert-danger' ? 'block' : 'none'">Esse texto somente aparece em caso de erro.</div>
 
   </article>
-  -->
   <article>
     <h3>Event binding</h3>
     <div>
@@ -61,7 +60,46 @@
         [class.highlight]="isMouseOver">
          Passe o mouse sobre mim
       </span>
-
     </div>
+  </article>
+      
+</section>
+
+<section class="two-way-binding">
+  <article>
+    <h3>Two-way data binding</h3>
+    <div>
+      <input type="text" 
+        [value]="nome"
+        (input)="nome = $event.target.value"
+      />
+      <input type="text" 
+        [ngModel]="nome"
+        (ngModelChange)="nome = $event"
+      />
+      <input type="text" bindon-ngModel="nome">
+      <input type="text" [(ngModel)]="nome">
+      <p>Você digitou: {{ nome }}</p>
+    </div>
+
+    <div>
+      <p>Meu nome é {{ pessoa.nome }} e tenho {{ pessoa.idade }} anos de idade </p>
+      <input type="text" [(ngModel)]="pessoa.nome">
+      <input type="text" [(ngModel)]="pessoa.idade">
+    </div>
+
+  </article>
+</section>
+
+<app-meu-form></app-meu-form>
+
+<section class="input-output-properties"> 
+  <article>
+    <h3>Input/Output Properties</h3>
+    <app-curso [nome]="nomeDoCurso"></app-curso>
+    <contador [valor]="valorInicial"
+        (mudouValor)="onMudouValor($event)"
+    >
+    </contador>
   </article>
 </section>
